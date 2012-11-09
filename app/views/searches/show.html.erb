@@ -1,0 +1,18 @@
+<h1> Search Result </h1>
+
+<div class = "search_entry">
+    <p>
+    <b>Keywords:</b>
+    <%= @search.keywords %>
+    </p>
+    <p>
+    <b>Price Range:</b>
+    <%= @search.minimum_price %> --
+    <%= @search.maximum_price %>
+    </p>
+</div>
+
+<%= render(@search.products)%>
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

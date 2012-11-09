@@ -1,0 +1,28 @@
+<h1>All Jewelry</h1>
+
+<%= form_tag all_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table class = "pretty">
+    <tr>
+        <th><%= sortable "title" %></th>
+        <th><%= sortable "price" %></th>
+        <th>Image</th>
+        <th>Description</th>
+    </tr>
+
+    <% @products.each do |product| %>
+        <tr>
+            <td><%= product.title%></td>
+            <td class = "price"><%= number_to_currency(product.price) %></td>
+            <td><%= image_tag(product.image_url, :size => "100x60")  %></td>
+            <td><%= sanitize(product.description) %></td>
+        <% end %>
+    </table>
+    
+    <p><%= will_paginate @products %></p>
+    
